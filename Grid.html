@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" 
+    rel = "stylesheet" />
+ <script type = "text/javascript" 
+    src = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+ 
+    <script type="text/javascript">
+        //creation of grid
+
+        Ext.define('TestDataModel',{
+            extend: 'Ext.data.Model',
+            fields: [
+                {name: 'name', mapping: 'name'},
+                {name: 'age', mapping: 'age'}
+            ]
+        });
+
+        Ext.onReady(function(){
+            //store data
+            var myData = [
+                {name: 'test',age:'21'},
+                {name: 'test1',age:'15'},
+                {name: 'test2',age:'60'},
+            ];
+
+            //creation of grid store
+            var gridStore = Ext.create('Ext.data.Store',{
+                model: 'TestDataModel',
+                data: myData
+            });
+
+            //creation of grid
+            Ext.create('Ext.grid.Panel',{
+                id: 'gridId',
+                store: gridStore,
+                title: 'Test Grid',
+                renderTo: 'gridDiv',
+
+                columns: [
+                    {
+                        header: 'Name',
+                        dataIndex: 'name',
+                        id: 'name',
+                        flex: 1,
+                    },
+                    {
+                        header: 'Age',
+                        dataIndex: 'age',
+                        flex: 1,
+
+                        renderer: function(value, metadata, record, rowIndex, colIndex, store){
+                            if(value>18)
+                            {
+                                return "Eligible For Vote";
+                            }
+                            else{
+                                return 'Not Eligible for Vote';
+                            }
+                        }
+                    }
+                ]
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="gridDiv"></div>
+</body>
+</html>
