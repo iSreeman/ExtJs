@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Confirm Box</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css"
+            rel="stylesheet" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+
+        <script>
+            Ext.onReady(function(){
+                Ext.create('Ext.Button',{
+                    renderTo: Ext.getElementById('msgBox'),
+                    text: 'Click Me',
+                    listeners: {
+                        click: function(){
+                            Ext.MessageBox.confirm("Confirm","Are you sure you want to proceed?",callBackFunction);
+                            function callBackFunction(btn){
+                                if(btn=='yes'){
+                                    Ext.Msg.alert('Button Click','You clicked yes button');
+                                }
+                                else{
+                                    Ext.Msg.alert('Button Click','You clicked no button');
+                                }
+                            }
+                        }
+                    }
+                })
+            })
+        </script>
+</head>
+<body>
+    <p>Click the button for alert box</p>
+    <div id="msgBox">
+
+    </div>
+</body>
+</html>

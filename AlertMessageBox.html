@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Basic Alert Box</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css"
+            rel="stylesheet" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+</head>
+    
+<script>
+    Ext.onReady(function(){
+        Ext.create('Ext.Button',{
+            renderTo: Ext.getElementById('msgBox'),
+            text: 'click me',
+            listeners: {
+                click: function(){
+                    Ext.Msg.alert('Title','Alert Message Box in Ext JS');
+                }
+            }
+        });
+    });
+</script>
+<body>
+    <p>Click the button for alert box</p>
+    <div id="msgBox">
+
+    </div>
+</body>
+</html>
